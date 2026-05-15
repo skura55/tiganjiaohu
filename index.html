@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>捏爆压力</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="game-container">
+        <canvas id="bg-canvas"></canvas>
+        <canvas id="game-canvas"></canvas>
+        <canvas id="hand-canvas"></canvas>
+        <canvas id="effect-canvas"></canvas>
+        <video id="webcam" autoplay playsinline style="display:none;"></video>
+        
+        <div id="ui-overlay">
+            <div id="header">
+                <h1 id="game-title">捏爆压力</h1>
+                <div id="countdown">50:00</div>
+            </div>
+            
+            <div id="stats">
+                <div class="stat-box">
+                    <span class="stat-label">得分</span>
+                    <span class="stat-value" id="score">0</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-label">捏爆</span>
+                    <span class="stat-value" id="crush-count">0</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-label">连击</span>
+                    <span class="stat-value" id="combo">x1</span>
+                </div>
+            </div>
+            
+            <div id="hand-status">
+                <div class="hand-indicator" id="left-hand">
+                    <span class="hand-label">左手</span>
+                    <span class="hand-state">张开</span>
+                </div>
+                <div class="hand-indicator" id="right-hand">
+                    <span class="hand-label">右手</span>
+                    <span class="hand-state">张开</span>
+                </div>
+            </div>
+        </div>
+        
+        <div id="instructions">
+            <p>双手握拳捏爆压力道具!</p>
+            <p class="small">允许摄像头权限以开始游戏</p>
+        </div>
+        
+        <div id="start-screen">
+            <canvas id="start-canvas"></canvas>
+            <div class="start-content">
+                <h1 class="start-title">捏爆压力</h1>
+                <p class="start-subtitle">释放双手，释放压力</p>
+                <p class="start-description">
+                    通过摄像头捕捉你的双手动作<br>
+                    握拳捏爆飞来的压力道具<br>
+                    越快的道具得分越高，特殊道具值10分！
+                </p>
+                <button id="start-btn" class="start-btn">开始游戏</button>
+            </div>
+        </div>
+        
+        <div id="end-screen">
+            <div class="end-content">
+                <h2 class="end-title">游戏结束</h2>
+                <div class="end-stats">
+                    <div class="end-stat">
+                        <span class="end-stat-label">最终得分</span>
+                        <span class="end-stat-value" id="end-score">0</span>
+                    </div>
+                    <div class="end-stat">
+                        <span class="end-stat-label">捏爆数量</span>
+                        <span class="end-stat-value" id="end-crush-count">0</span>
+                    </div>
+                    <div class="end-stat">
+                        <span class="end-stat-label">最高连击</span>
+                        <span class="end-stat-value" id="end-max-combo">0</span>
+                    </div>
+                </div>
+                <div class="end-buttons">
+                    <button id="restart-btn" class="end-btn primary">再来一次</button>
+                    <button id="save-btn" class="end-btn secondary">数据存档</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands@0.4.1675469240/hands.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils@0.3.1675466862/camera_utils.min.js"></script>
+    <script src="js/background.js"></script>
+    <script src="js/handTracker.js"></script>
+    <script src="js/propSystem.js"></script>
+    <script src="js/effectSystem.js"></script>
+    <script src="js/collision.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
